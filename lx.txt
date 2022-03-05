@@ -1,0 +1,80 @@
+# Learning Django step by step
+
+0. Install/ Update Python
+
+1. Installing Django:
+- install/ upgrade pip  
+	# $ python3 -m pip install --upgrade pip
+- make venv and activate it
+	# $ python3 -m venv .venv
+	# $ source .venv/bin/activate
+- install Django
+	# $ python3 -m pip install Django
+- verify installation
+	# $ python3 -m django --version
+
+2. Creating a project
+- cd into your project directory and then install django project
+	# $ django-admin startproject projectlx
+- above code will return nothing on success
+- see what inside the 'projectlx'
+--------------------------------
+|->	projectlx/		# root directory; container for project; name doesn't matter; rename if you want to
+    |->	    projectlx/		# actual python package for project; 
+        |->	__init__.py	# every python package contains this empty file;
+        |->	settings.py	# settings/ configurations for this project;
+        |->	urls.py
+        |->	asgi.py
+        |->	wsgi.py
+    |->	    manage.py		# command-line utility; interact with project; 
+---------------------------------
+
+
+
+
+
+
+
+
+####### learn this things
+# Using enumerate()
+# The xrange()function
+# Variable scope and Returning Values
+# Sorting
+# Alternate Keys
+# Handling multiple exceptions
+# The standard exception hierarchy using Modules
+# Web development
+# Introduction to Django Web Framework
+# Features of Django
+
+## Installing Django  # done
+# MVC model
+# HTTP concepts
+# Views
+# URL Mapping
+# Django Template Language
+# Utilities of Templates
+# Creating Template Objects
+# Tags, Variables and Filters
+# Rendering Templates
+# Template Inheritance
+# Form Handling
+# Form validation and Error Messages
+# Form Display
+# Django Models
+# Model Fields
+# Model Inheritance
+# CRUD on DB
+# Primary keys and the Model
+# Dynamic Webpages
+# Toggle Hidden Content
+# jQuery and AJAX integration
+# Serialization and Deserialization
+# Django REST Framework
+# Serializer class
+# Model Serializers
+# REST APIs
+# XML-RPC
+# XML, parsing object to XML and back
+# JSON, parsing object to JSON and back
