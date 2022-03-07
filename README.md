@@ -34,17 +34,17 @@ ___
    - above code will return nothing on success
    - see what inside the 'projectlx'
 --------------------------------
-| projectlx/		[1]
-
-    | projectlx/	# actual python package for project; 
+>  | projectlx/   # root directory; container for project; name doesn't matter; rename if you want to
+      | projectlx/	# actual python package for project; 
         | __init__.py		# every python package contains this empty file;
         | settings.py		# settings/ configurations for this project;
         | urls.py		# URL declarations for this project; aka 'table of content'; 
         | asgi.py		# entry point for ASGI-compatible web servers to serve proj.; Asynchronous Server Gateway Interface;
         | wsgi.py		# entry point for WSGI-compatible web servers to serve proj.; Web Server Gateway Interface;
-    | manage.py		# command-line utility; interact with project; eg.: runserver
+      | manage.py		# command-line utility; interact with project; eg.: runserver
+>  |
 ---------------------------------
-> [1] root directory; container for project; name doesn't matter; rename if you want to
+> [1] 
 ---------------------------------
 
 ___
