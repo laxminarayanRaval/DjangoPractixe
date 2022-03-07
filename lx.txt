@@ -64,6 +64,48 @@
 - open the file 'polls/views.py' and put some code in it
 - now do some url mapping; make a new file 'urls.py'
 
+6. Database setup ----------
+- Open up projectlx/settings.py. It’s a normal Python module with module-level variables representing Django settings.
+- By default, the configuration uses SQLite.
+- If you wish to use another database; install the appropriate database bindings and change the following keys in the DATABASES 'default' item to match your database connection settings:
+- ENGINE – Either 
+	'django.db.backends.sqlite3', 
+	'django.db.backends.postgresql', 
+	'django.db.backends.mysql',
+	'django.db.backends.oracle', or
+	etc.
+- NAME – The name of your database. If you’re using SQLite, the database will be a file on your computer;
+	The default value, ```*BASE_DIR / 'db.sqlite3'*```, will store the file in your project directory.
+
+- DATABASES = {
+      'default': {
+          'ENGINE': 'django.db.backends.sqlite3',
+          'NAME': BASE_DIR / 'db.sqlite3',  # default db; 'mydatabase',
+      }
+  }
+
+- run the following command to database create table
+	# $ python3 manage.py migrate
+
+7. Creating models ----------
+- create models as much as you want in {appDirectory}=[polls]/models.py
+- make a class of model that extends/ inherits *models.Model* 
+- eg.:
+	class Choice(models.Model):
+		que = models.ForeignKey(Question, on_delete=models.CASCADE)
+		cho = models.CharField(max_length=200)
+		vot = models.IntegerField(default=0)
+
+8. Activating models ----------
+- first we need to tell our project that the polls app is installed.
+- To include the app in our project, we need to add a reference to its configuration class in the *INSTALLED_APPS* setting.
+- edit 'INSTALLED_APPS' on 'projectlx/settings.py' and add 'PollsConfig' class is in 'polls/apps.py' so dotted path is polls.apps.PollsConfig'
+	# python3 manage.py makemigrations polls
+- this command has generated migratration named '0001_initial.py' in 'migratrations/' directory
+
+
+
+
 
 
 
@@ -109,3 +151,23 @@
 # XML-RPC
 # XML, parsing object to XML and back
 # JSON, parsing object to JSON and back
+
+Ruchit Bhai -----------------
+
+- https://www.youtube.com/watch?v=gpXuEghz1zc
+
+- https://how2electronics.com/iot-biometric-fingerprint-attendance-system-nodemcu/
+
+- https://create.arduino.cc/projecthub/projects/tags/fingerprint
+- https://www.electronicscomp.com/finger-print-sensor-module-r307-india?gclid=EAIaIQobChMIvvX7iciz9gIVk9eWCh2RGQ1nEAYYASABEgKkifD_BwE
+
+- https://robu.in/product/electric-sucker-electromagnet-kk-p20-15-12v/
+- https://robu.in/product/grove-1-kg-electromagnet-module/?gclid=EAIaIQobChMI94rGvMqz9gIVsNxMAh3JcAqgEAYYAiABEgIoFvD_BwE
+
+=============================
+
+for bhavya bhai -------------
+
+- https://www.youtube.com/watch?v=yAV5aZ0unag
+
+- https://www.youtube.com/watch?v=pSFkiqtGgjs
