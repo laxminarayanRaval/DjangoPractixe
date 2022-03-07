@@ -3,9 +3,11 @@ Practising Django Web Framework ( Python ) ...
 ---
 ## Learning Django step by step
 
-0. Install/ Update Python ----------
+___
+0. Install/ Update Python
 
-1. Installing Django ----------
+___
+1. Installing Django
    - install/ upgrade pip 
    
    ``` $ python3 -m pip install --upgrade pip```
@@ -24,7 +26,8 @@ Practising Django Web Framework ( Python ) ...
 	
    ``` $ python3 -m django --version```
 
-2. Creating a project ----------
+___
+2. Creating a project
    - cd into your project directory and then install django project
 	
    ```$ django-admin startproject projectlx```
@@ -41,7 +44,8 @@ Practising Django Web Framework ( Python ) ...
     | manage.py		###### command-line utility; interact with project; eg.: runserver
 ---------------------------------
 
-3. Start The development server ----------
+___
+3. Start The development server
    - cd into your project root directory
    - execute runserver command from manage.py
 	###### $ python3 manage.py runserver
