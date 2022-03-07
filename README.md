@@ -7,18 +7,27 @@ Practising Django Web Framework ( Python ) ...
 
 1. Installing Django ----------
    - install/ upgrade pip 
-	###### $ python3 -m pip install --upgrade pip
+   
+   ``` $ python3 -m pip install --upgrade pip```
+   
    - make venv and activate it
-	###### $ python3 -m venv .venv
-	###### $ source .venv/bin/activate
+	
+   ``` $ python3 -m venv .venv```
+	
+   ``` $ source .venv/bin/activate```
+   
    - install Django
-	###### $ python3 -m pip install Django
+	
+   ``` $ python3 -m pip install Django```
+   
    - verify installation
-	###### $ python3 -m django --version
+	
+   ``` $ python3 -m django --version```
 
 2. Creating a project ----------
    - cd into your project directory and then install django project
-	###### $ django-admin startproject projectlx
+	
+   ```$ django-admin startproject projectlx```
    - above code will return nothing on success
    - see what inside the 'projectlx'
 --------------------------------
