@@ -34,8 +34,7 @@ ___
    - above code will return nothing on success
    - see what inside the 'projectlx'
 --------------------------------
-| projectlx/
-> root directory; container for project; name doesn't matter; rename if you want to
+| projectlx/   # root directory; container for project; name doesn't matter; rename if you want to
 
     | projectlx/	# actual python package for project; 
         | __init__.py		# every python package contains this empty file;
