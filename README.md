@@ -35,7 +35,7 @@ ___
    - see what inside the *'projectlx'*
 
 --------------------------------
-| projectlx/   # root directory; container for project; name doesn't matter; rename if you want to
+> projectlx/      # outer directory; root directory; container for project; name doesn't matter; rename if you want to
 
     | projectlx/     # actual python package for project; 
         | __init__.py	# every python package contains this empty file;
@@ -63,3 +63,32 @@ ___
    ``` $ python manage.py runserver 0:8080```
    
    - production server reloads automatically; need to reload in case of adding file
+
+---
+4. Creating the Polls app
+   - Each application you write in Django consists of a Python package
+   - An app is a web application that does something.;  An app can be in multiple projects.; Your apps can live anywhere on your Python path
+   - A project is a collection of configuration and apps for a particular website.; A project can contain multiple apps
+   - create poll app
+	
+   ``` $ python3 manage.py startapp polls```
+   
+   - this will return nothing on success
+--------------------------------
+> projectlx/		# root directory;
+
+    | polls/			# app directory;
+    	| __init__.py
+    	| admin.py
+    	| apps.py
+    	| migrations/
+            | __init__.py
+    	| models.py
+    	| tests.py
+    	| views.py
+--------------------------------
+
+---
+5. Writing your first view
+   - open the file 'polls/views.py' and put some code in it
+   - now do some url mapping; make a new file 'urls.py'
