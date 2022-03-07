@@ -100,8 +100,35 @@
 - first we need to tell our project that the polls app is installed.
 - To include the app in our project, we need to add a reference to its configuration class in the *INSTALLED_APPS* setting.
 - edit 'INSTALLED_APPS' on 'projectlx/settings.py' and add 'PollsConfig' class is in 'polls/apps.py' so dotted path is polls.apps.PollsConfig'
-	# python3 manage.py makemigrations polls
+	# $ python3 manage.py makemigrations polls
 - this command has generated migratration named '0001_initial.py' in 'migratrations/' directory
+- The sqlmigrate command takes migration names and returns their SQL
+	# $ python3 manage.py sqlmigrate polls 0001
+- Now, run migrate again to create those model tables in your database
+	# $ python3 manage.py migrate
+- Three step guide to make changes in Model
+	- Change your models (in models.py).
+	- Run python manage.py makemigrations to create migrations for those changes
+	- Run python manage.py migrate to apply those changes to the database
+
+===
+# Introducing the Django Admin
+---
+9. Creating an admin user ----------
+- First we’ll need to create a user who can login to the admin site.
+	# $ python3 manage.py createsuperuser
+	# Username (leave blank to use 'intel'): admin
+	# Email address: admin@project.lx
+	# Password: ******** 
+	# Password (again): ********
+- Now login to *http://127.0.0.1:8000/admin/* with above credentials
+- now as you can see there is no poll app
+- we need to tell the admin that 'Question objects' have an admin interface. To do this, open the 'polls/admin.py' file,
+- and register Your 'Question Model', and reload admin site
+
+
+10. Explore the free admin functionality ----------
+
 
 
 
