@@ -128,11 +128,19 @@
 
 
 10. Explore the free admin functionality ----------
+- Here you can add edit or delete models registred in admin side.
 
+11. Making New Views and Routes (Path) for them ---------
+- (detail, results and vote) and passing question id (que_id) to them
+- go to 'views.py' file in your app directory and make three functions accepting two arguments (request, que_id) respectedly 
+- go to 'urls.py' in your app directory (make sure that is already linked with packages 'urls.py')
+- add 'path' function with three parameters
+	-- 1. for path/ for route pattern matching string eg.: 	'<int:que_id>' where 'int' is type of data and 'que_id' is for naming that data
+	-- 2. for specifying views eg.: views.detail (make sure you've imported 'views' from same (app) directory)
+	-- 3. name of the view eg.: name='detail'; this is kwargs (keyword argument)
 
-
-
-
+12. Using Django's Template System --------
+- 
 
 
 
