@@ -152,22 +152,3 @@
 # XML, parsing object to XML and back
 # JSON, parsing object to JSON and back
 
-Ruchit Bhai -----------------
-
-- https://www.youtube.com/watch?v=gpXuEghz1zc
-
-- https://how2electronics.com/iot-biometric-fingerprint-attendance-system-nodemcu/
-
-- https://create.arduino.cc/projecthub/projects/tags/fingerprint
-- https://www.electronicscomp.com/finger-print-sensor-module-r307-india?gclid=EAIaIQobChMIvvX7iciz9gIVk9eWCh2RGQ1nEAYYASABEgKkifD_BwE
-
-- https://robu.in/product/electric-sucker-electromagnet-kk-p20-15-12v/
-- https://robu.in/product/grove-1-kg-electromagnet-module/?gclid=EAIaIQobChMI94rGvMqz9gIVsNxMAh3JcAqgEAYYAiABEgIoFvD_BwE
-
-=============================
-
-for bhavya bhai -------------
-
-- https://www.youtube.com/watch?v=yAV5aZ0unag
-
-- https://www.youtube.com/watch?v=pSFkiqtGgjs
