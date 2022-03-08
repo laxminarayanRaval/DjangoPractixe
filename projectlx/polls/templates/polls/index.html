@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polls Application</title>
+</head>
+
+<body>
+    <h1># Poll Questions</h1>
+    {% if que_list %}
+    <ul>
+        {% for que in que_list %}
+        <li style="border-left:4px solid rgb(0, 98, 128);padding: 5px 15px;">
+            <a href="/polls/{{ que.id }}">{{ que.que_text }}</a>
+        </li><br>
+        {% endfor %}
+    </ul>
+    {% elif que %}
+    <h3>Question: <code style="border-bottom:2px solid lightsalmon;padding: 5px 15px;">{{ que }}</code></h3>
+    {% else %}
+    <p>No Polls are available.</p>
+    {% endif %}
+</body>
+
+</html>
