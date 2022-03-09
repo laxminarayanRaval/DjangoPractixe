@@ -92,9 +92,9 @@
 - make a class of model that extends/ inherits *models.Model* 
 - eg.:
 	class Choice(models.Model):
-		que = models.ForeignKey(Question, on_delete=models.CASCADE)
-		cho = models.CharField(max_length=200)
-		vot = models.IntegerField(default=0)
+		question = models.ForeignKey(Question, on_delete=models.CASCADE)
+		choice = models.CharField(max_length=200)
+		vote = models.IntegerField(default=0)
 
 8. Activating models ----------
 - first we need to tell our project that the polls app is installed.
@@ -106,7 +106,7 @@
 	# $ python3 manage.py sqlmigrate polls 0001
 - Now, run migrate again to create those model tables in your database
 	# $ python3 manage.py migrate
-- Three step guide to make changes in Model
+- Three step guide to make changes in Model 
 	- Change your models (in models.py).
 	- Run python manage.py makemigrations to create migrations for those changes
 	- Run python manage.py migrate to apply those changes to the database
@@ -144,7 +144,19 @@
 - make another directory name same as app name inside that 'template/app_name'
 - now make/use *.html pages inside in this folder
 - here app's name is polls, so this will look like: 'polls/index.html'
-- in view page import loader or render from django.template or django.shortcuts respectively 
+- in view page import loader or render from django.template or django.shortcuts respectively and send some data to the template too eg.: 'que_list' and 'que'
+	--> template = loader.get_template('polls/index.html')
+	--> return HttpResponse(template.render({'que_list': latest_ques_list}, request))
+	# or
+	--> return render(request, 'polls/index.html', {'que': que_detail})
+- here you can template namespacing
+
+13. Using Model for Retriving Data ---------
+- import Model (Question) from .models, so here we can use them
+- here you can use, Model.objects query or django's shortcut method that accept model as first argument
+- for that you need to import get_object_or_404 from django.shortcuts
+
+14. Removing Hard core URLs
 
 
 

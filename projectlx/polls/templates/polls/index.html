@@ -19,7 +19,16 @@
         {% endfor %}
     </ul>
     {% elif que %}
-    <h3>Question: <code style="border-bottom:2px solid lightsalmon;padding: 5px 15px;">{{ que }}</code></h3>
+    <h3>Question: <code style="border-bottom:2px solid lightsalmon;padding: 5px 15px;">{{ que.que_text }}</code></h3>
+    <form action="" method="post">
+        <input type="hidden" name="qid" value="{{ que.id }}">
+        <ul>
+            {% for choice in que.choice_set.all %}
+            <li> <input type="radio" name="choice" value="{{ choice.cho }}">{{ choice.cho }} </li>
+            {% endfor %}
+        </ul>
+        <input type="submit" value="Vote">
+    </form>
     {% else %}
     <p>No Polls are available.</p>
     {% endif %}
