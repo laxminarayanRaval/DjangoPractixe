@@ -79,7 +79,7 @@ ___
     	| admin.py
     	| apps.py
     	| migrations/
-            | __init__.py
+                | __init__.py
     	| models.py
     	| tests.py
     	| views.py
@@ -158,11 +158,11 @@ ___
 #### 12. Making new Routes for above Views
    - now make new routes (detail, results, vote), for that open 'urls.py' of your app directory
       *( Make sure your app's 'urls.py' is linked to the package's 'urls.py')*
-   - add path function with three parameters:
-      eg.: ``path('<int:que_id>/', views.details, name='detail')``
-      Parameter 1. route or path, that is going to be accessed 
-      Parameter 2. view name. (function that you created in 'view.py')
-      Parameter 3. naming the route  
+   - add path function with three parameters: \
+      eg.: ``path('<int:que_id>/', views.details, name='detail')`` \
+      *Parameter 1.* route or path, that is going to be accessed  \
+      *Parameter 2.* view name. (function that you created in 'view.py') \
+      *Parameter 3.* naming the route   \
 
 ___
 #### 13. Using Django's Template System
