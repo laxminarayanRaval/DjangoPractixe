@@ -4,10 +4,10 @@ Practising Django Web Framework ( Python ) ...
 ## Learning Django step by step
 
 ___
-0. Install/ Update Python
+#### 0. Install/ Update Python
 
 ___
-1. Installing Django
+#### 1. Installing Django
    - install/ upgrade pip 
    
    ``` $ python3 -m pip install --upgrade pip```
@@ -27,7 +27,7 @@ ___
    ``` $ python3 -m django --version```
 
 ___
-2. Creating a project
+#### 2. Creating a project
    - cd into your project directory and then install django project
 	
    ```$ django-admin startproject projectlx```
@@ -97,13 +97,13 @@ ___
 6. Setting up Database
    - open 'setting.py' of project package (here projectlx); It is a normal python module with module-level variables representing django settings.
    - for database by default configuration are for 'sqlite3'
-   - if you wish to use anyother database, install the appropriate database bindings and change the following keys in the ```DATABASE```, ```'default'``` item
-      -- ```ENGINE``` - Either
-                  ```django.db.backends.sqlite3```
-                  ```django.db.backends.postgresql```
-                  ```django.db.backends.mysql```
-                  ```django.db.backends.oracle``` or
-                  etc.
+   - if you wish to use anyother database, install the appropriate database bindings and change the following keys in the ```DATABASE```, ```'default'``` item \
+      -- ```ENGINE``` - Either \
+                  ```django.db.backends.sqlite3``` \
+                  ```django.db.backends.postgresql``` \
+                  ```django.db.backends.mysql``` \
+                  ```django.db.backends.oracle``` or \
+                  etc. \
       -- ```NAME``` - The name of your Database. If you are using sqlite, the database will be saved in project root directory.
    - run the command to create table database
 
@@ -113,7 +113,7 @@ ___
    - You can create any number of models in models directors's situated inside app
    - while making a Model you need to create a class for that model, which extends the ```models.Model```, which you need to import from ```django.db``` 
    - eg.:
-   > class Question(models.Model): \
+   class Question(models.Model): \
       que_text = models.CharField(max_length=200) \
       pub_date = models.DateTimeField('date published') \
       ans_text = models.CharField(max_length=200)
