@@ -109,9 +109,9 @@ ___
    - while making a Model you need to create a class for that model, which extends the ```models.Model```, which you need to import from ```django.db``` 
    - eg.: \
        class Question(models.Model): \
-           que_text = models.CharField(max_length=200) \
-           pub_date = models.DateTimeField('date published') \
-           ans_text = models.CharField(max_length=200)
+                           que_text = models.CharField(max_length=200) \
+                           pub_date = models.DateTimeField('date published') \
+                           ans_text = models.CharField(max_length=200)
 
 ___
 #### 8. Activating Models
