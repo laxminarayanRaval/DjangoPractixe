@@ -34,7 +34,6 @@ ___
    - above code will return nothing on success
    - see what inside the *'projectlx'*
 
---------------------------------
 > projectlx/      # outer directory; root directory; container for project; name doesn't matter; rename if you want to
 
     | projectlx/     # actual python package for project; 
@@ -44,8 +43,6 @@ ___
         | asgi.py		# entry point for ASGI-compatible web servers to serve proj.; Asynchronous Server Gateway Interface;
         | wsgi.py		# entry point for WSGI-compatible web servers to serve proj.; Web Server Gateway Interface;
     | manage.py		# command-line utility; interact with project; eg.: runserver
----------------------------------
-
 ___
 #### 3. Start The development server
    - cd into your project root directory
@@ -64,7 +61,7 @@ ___
    
    - production server reloads automatically; need to reload in case of adding file
 
----
+___
 #### 4. Creating the Polls app
    - Each application you write in Django consists of a Python package
    - An app is a web application that does something.;  An app can be in multiple projects.; Your apps can live anywhere on your Python path
@@ -74,7 +71,7 @@ ___
    ``` $ python3 manage.py startapp polls```
    
    - this will return nothing on success
---------------------------------
+   
 > projectlx/		# root directory;
 
     | polls/			# app directory;
