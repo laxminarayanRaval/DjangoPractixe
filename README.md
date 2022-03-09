@@ -47,7 +47,7 @@ ___
 ---------------------------------
 
 ___
-3. Start The development server
+#### 3. Start The development server
    - cd into your project root directory
    - execute runserver command from manage.py
 	
@@ -65,7 +65,7 @@ ___
    - production server reloads automatically; need to reload in case of adding file
 
 ---
-4. Creating the Polls app
+#### 4. Creating the Polls app
    - Each application you write in Django consists of a Python package
    - An app is a web application that does something.;  An app can be in multiple projects.; Your apps can live anywhere on your Python path
    - A project is a collection of configuration and apps for a particular website.; A project can contain multiple apps
@@ -89,12 +89,12 @@ ___
 --------------------------------
 
 ___
-5. Writing your first view
+#### 5. Writing your first view
    - open the file 'polls/views.py' and put some code in it
    - now do some url mapping; make a new file 'urls.py'
 
 ___
-6. Setting up Database
+#### 6. Setting up Database
    - open 'setting.py' of project package (here projectlx); It is a normal python module with module-level variables representing django settings.
    - for database by default configuration are for 'sqlite3'
    - if you wish to use anyother database, install the appropriate database bindings and change the following keys in the ```DATABASE```, ```'default'``` item \
@@ -109,7 +109,7 @@ ___
 
    ```$ python3 manage.py migrate```
 ___
-7. Create Models
+#### 7. Create Models
    - You can create any number of models in models directors's situated inside app
    - while making a Model you need to create a class for that model, which extends the ```models.Model```, which you need to import from ```django.db``` 
    - eg.:
@@ -119,7 +119,7 @@ ___
       ans_text = models.CharField(max_length=200)
 
 ___
-8. Activating Models
+#### 8. Activating Models
    - first we need to tell our project that app in installed.
    - to include the app in our project, we need to add reference to its configuration class in the `INSTALLED_APPS` setting.
    - edit `INSTALLED_APPS` on settings.py inside project directory
@@ -135,7 +135,7 @@ ___
 
 ___
 ### Introducing Django Admin
-9. Creating Superuser (Admin)
+#### 9. Creating Superuser (Admin)
    - to create a superuser we need to run 'createsuperuser' command from 'manage.py'
 
    ```$ python3 manage.py createsuperuser```
@@ -150,19 +150,19 @@ ___
    - register '`Question`' Model in 'admin.py' in app directory; reload admin side to see effects.
 
 ___
-10. Explore the free admin funcionality
+#### 10. Explore the free admin funcionality
    - here adding Question
    - editing and deleting existing Questions can be done, easyly
 
 ___
-11. Making New Views
+#### 11. Making New Views
    - Create new Views and pass question id to it; (detail, results, vote) new views
    - open 'views.py' in your app directory, and make three functions/ views
       
       `syntax:- def view_name(request, *args): return HttpsResponse("sample text")`
    
 ___
-12. Making new Routes for above Views
+#### 12. Making new Routes for above Views
    - now make new routes (detail, results, vote), for that open 'urls.py' of your app directory
       *( Make sure your app's 'urls.py' is linked to the package's 'urls.py')*
    - add path function with three parameters:
@@ -172,7 +172,7 @@ ___
       Parameter 3. naming the route  
 
 ___
-13. Using Django's Template System
+#### 13. Using Django's Template System
    - make a new directory name 'template' in your app directory
    - make another directory inside 'template/' same name as app directory
    - here in this directory put your all html pages
