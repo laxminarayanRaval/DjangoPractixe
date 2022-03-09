@@ -171,7 +171,7 @@ ___
    - here in this directory put your all html pages
       eg.: ``app_directory/template/app_name_directory/*.html``
    - to render templates in views import loader/render from django.template/django.shortcuts respectively
-   - sending some data in templates
+   - sending some data in templates \
       I. using `loader` object's, methods `'get_template('path_for_template')'`\
          eg.:\
          ```template = loader.get_('polls/index.html').render({'data':"Some Data"}, request)``` \
