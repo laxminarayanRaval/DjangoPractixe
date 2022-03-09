@@ -140,7 +140,11 @@
 	-- 3. name of the view eg.: name='detail'; this is kwargs (keyword argument)
 
 12. Using Django's Template System --------
-- 
+- Make directory name 'template', that django finds default for templates
+- make another directory name same as app name inside that 'template/app_name'
+- now make/use *.html pages inside in this folder
+- here app's name is polls, so this will look like: 'polls/index.html'
+- in view page import loader or render from django.template or django.shortcuts respectively 
 
 
 

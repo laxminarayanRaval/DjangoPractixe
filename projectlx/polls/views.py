@@ -1,6 +1,6 @@
 from django.http import HttpResponse, Http404
 from django.template import loader
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from polls.models import Question
 
 
@@ -12,10 +12,11 @@ def index(request):
     return HttpResponse(template.render({'que_list': latest_ques_list}, request))
 
 def detail(request, que_id):
-    try:
-        que_detail = Question.objects.get(id=que_id).que_text
-    except:
-        raise Http404("Question Not Found")
+    que_detail = get_object_or_404(Question, pk=que_id)
+    # try:
+        # que_detail = Question.objects.get(id=que_id).que_text
+    # except:
+        # raise Http404("Question Not Found")
     return render(request, 'polls/index.html', {'que': que_detail})
     # return HttpResponse(f"You are looking at question {que_detail}")
 
