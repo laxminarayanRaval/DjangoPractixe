@@ -86,8 +86,6 @@ ___
     	| models.py
     	| tests.py
     	| views.py
---------------------------------
-
 ___
 #### 5. Writing your first view
    - open the file 'polls/views.py' and put some code in it
