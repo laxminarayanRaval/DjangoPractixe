@@ -173,9 +173,9 @@ ___
    - to render templates in views import loader/render from django.template/django.shortcuts respectively
    - sending some data in templates \
       I. using `loader` object's, methods `'get_template('path_for_template')'`\
-         eg.:\
+           eg.:\
          ```template = loader.get_('polls/index.html').render({'data':"Some Data"}, request)``` \
          ```return HttpsResponse(template)``` \
-      II. using `render()` shortcut helper 
-         eg.: ```return render(request, 'polls/index.html', {'data': "Some Data"})```
+      II. using `render()` shortcut helper \
+           eg.: ```return render(request, 'polls/index.html', {'data': "Some Data"})```
    
