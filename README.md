@@ -136,12 +136,11 @@ ___
 ___
 ### Introducing Django Admin
 #### 9. Creating Superuser (Admin)
-   - to create a superuser we need to run 'createsuperuser' command from 'manage.py'
-
+   - to create a superuser we need to run 'createsuperuser' command from 'manage.py' \
    ```$ python3 manage.py createsuperuser```
    > Username: admin \
    Email Address: admin@email.com \
-   Password: *******
+   Password: ******* \
    Password (again): *******
 
    - with the help of above command we have created superuser or admin side login
@@ -151,14 +150,13 @@ ___
 
 ___
 #### 10. Explore the free admin funcionality
-   - here adding Question
+   - here you can perform operations adding Question
    - editing and deleting existing Questions can be done, easyly
 
 ___
 #### 11. Making New Views
    - Create new Views and pass question id to it; (detail, results, vote) new views
-   - open 'views.py' in your app directory, and make three functions/ views
-      
+   - open 'views.py' in your app directory, and make three functions/ views \
       `syntax:- def view_name(request, *args): return HttpsResponse("sample text")`
    
 ___
