@@ -109,9 +109,9 @@ ___
    - while making a Model you need to create a class for that model, which extends the ```models.Model```, which you need to import from ```django.db``` 
    - eg.:
    class Question(models.Model): \
-      que_text = models.CharField(max_length=200) \
-      pub_date = models.DateTimeField('date published') \
-      ans_text = models.CharField(max_length=200)
+          que_text = models.CharField(max_length=200) \
+          pub_date = models.DateTimeField('date published') \
+          ans_text = models.CharField(max_length=200)
 
 ___
 #### 8. Activating Models
@@ -162,7 +162,7 @@ ___
       eg.: ``path('<int:que_id>/', views.details, name='detail')`` \
       *Parameter 1.* route or path, that is going to be accessed  \
       *Parameter 2.* view name. (function that you created in 'view.py') \
-      *Parameter 3.* naming the route   \
+      *Parameter 3.* naming the route  
 
 ___
 #### 13. Using Django's Template System
