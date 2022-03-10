@@ -1,6 +1,7 @@
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 from polls.models import Question
 
 
@@ -17,12 +18,30 @@ def detail(request, que_id):
         # que_detail = Question.objects.get(id=que_id).que_text
     # except:
         # raise Http404("Question Not Found")
-    return render(request, 'polls/index.html', {'que': que_detail})
+    return render(request, 'polls/details.html', {'que': que_detail})
     # return HttpResponse(f"You are looking at question {que_detail}")
 
 def results(request, que_id):
-    response = "You're looking at the result of question %s."
-    return HttpResponse(response % que_id)
+    que_detail = get_object_or_404(Question, pk=que_id)
+    data = {
+        'que_id': que_id, 
+        'que_text': que_detail.que_text, 
+        'choices':[choice for choice in que_detail.choice_set.all()],
+        'total_votes': sum([choice.vote for choice in que_detail.choice_set.all()])
+        }
+    # print(data)
+    # response = "You're looking at the result of question %s."
+    # return HttpResponse(response % que_id)
+    return render(request, 'polls/result.html', {'data': data})
 
 def vote(request, que_id):
-    return HttpResponse("You're voting on question %s." % que_id)
+    que_detail = get_object_or_404(Question, pk=que_id)
+    try:
+        selected_choice = que_detail.choice_set.get(pk=request.POST['choice'])
+    except(KeyError, Choice.DoesNotExist):
+        return render(request, 'polls/details.html', {'que': que_detail, 'error_msg': 'Select Proper Choice.'})
+    else:
+        selected_choice.vote += 1
+        selected_choice.save()
+        return HttpResponseRedirect(reverse('polls:results', args=(que_detail.id,)))
+    # return HttpResponse("You're voting on question %s." % que_id) 

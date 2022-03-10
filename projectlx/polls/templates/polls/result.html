@@ -1,0 +1,29 @@
+{% extends 'polls/base.html' %}
+{% block head %}
+    <title>Result of Poll Question</title>
+{% endblock %}
+{% block content %}
+    {% if data %}
+        <h4 class="display-4 mb-5">Q: {{ data.que_text }}</h4>
+        {% for choice in data.choices %}
+            <p class="lead mb-0"><b>{{ choice.choice_text }}</b> ({{ choice.vote }}/{{ data.total_votes|pluralize }}) </p> 
+            <div class="progress shadow mb-4"style="height:2rem; font-size: 1.5rem;">
+                <div class="progress-bar" role="progressbar" 
+                aria-valuenow="{{ choice.vote }}" aria-valuemin="0" 
+                aria-valuemax="{{ data.total_votes }}" style="width:{% widthratio choice.vote data.total_votes 100 %}%">
+                  <span class="sr-only">{% widthratio choice.vote data.total_votes 100 %}%</span>
+                </div>
+            </div>
+        {% endfor %}
+        <a href="{% url 'polls:detail' data.que_id %}" class="btn btn-success mt-3 text-center" >Vote Again</a>
+    {% else %}
+        <h4 class="display-4">Question Not Found</h4>
+    {% endif %}
+
+    <script>
+        setTimeout(function () {
+            location.reload();
+        }, 3000);
+    </script>
+    
+{% endblock %}
