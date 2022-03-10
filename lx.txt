@@ -131,7 +131,7 @@
 - Here you can add edit or delete models registred in admin side.
 
 11. Making New Views and Routes (Path) for them ---------
-- (detail, results and vote) and passing question id (que_id) to them
+- (detail, results and vote) and passing question id (que_id) to them	
 - go to 'views.py' file in your app directory and make three functions accepting two arguments (request, que_id) respectedly 
 - go to 'urls.py' in your app directory (make sure that is already linked with packages 'urls.py')
 - add 'path' function with three parameters
@@ -156,8 +156,19 @@
 - here you can use, Model.objects query or django's shortcut method that accept model as first argument
 - for that you need to import get_object_or_404 from django.shortcuts
 
-14. Removing Hard core URLs
+14. Removing hardcoded URLs in templates ---------
+- here we use route names that we created earleir in 11.3
+- django template tag {% url %}
+- add in 'urls.py' of app directory, app_name = 'polls'  # Namespacing URL names 
 
+15. Using Form in Django --------
+- use django's url tag for action
+- add {% csrf_token %} ( cross-site request forgery token ), to prevent cross-site scripting (xss)
+- you can use {% forloop.counter %}
+- also you can use {% widthratio min max total %} (min*max/total) for ratios/percentages
+
+16. Getting forms values in View --------
+- use request.POST (a dictionary-like object) eg.: request.POST['choice']
 
 
 ####### learn this things
