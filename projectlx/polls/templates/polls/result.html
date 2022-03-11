@@ -3,14 +3,49 @@
     <title>Result of Poll Question</title>
 {% endblock %}
 {% block content %}
-    {% if data %}
+    <a href="{% url 'polls:index' %}" class="mt-3 text-center" >Show All Polls </a>>
+    {% if question %}
+        <h1 class="mb-5">Question: <small>{{ question }}</small></h1>
+        {% for choice in question.choice_set.all %}
+            <p class="lead mb-0"><b>{{ choice.choice_text }}</b> (<i class="votes" id="{{ forloop.counter }}">{{ choice.vote }}</i>/ <b class="total_vote">00</b> votes)</p>
+            <div class="progress shadow mb-4" style="height:2rem; font-size: 1.5rem;">
+                <div class="progress-bar" role="progressbar" 
+                aria-valuenow="{{ choice.vote }}" aria-valuemin="0" 
+                aria-valuemax="100" style='width:100%'>
+                  <span class="sr-only">{% widthratio choice.vote data.total_votes 100 %}%</span>
+                </div>
+            </div>
+        {% endfor %}
+        <a href="{% url 'polls:detail' question.id %}" class="btn btn-success mt-3 text-center" >Vote Again</a>
+    {% endif %}
+    <script>
+        let sum = 0;
+        let per = [];
+        (() => {
+            for (let i = 0; i < 4; i++) {
+                sum += Number(document.getElementsByClassName('votes')[i].innerHTML)
+                per[i] = Number(document.getElementsByClassName('votes')[i].innerHTML)
+            }
+            for (let i = 0; i < 4; i++) {
+                document.getElementsByClassName('total_vote')[i].innerHTML = sum
+                per[i] = ((per[i] / sum) * 100).toFixed(2);
+                setTimeout(() => {
+                    document.getElementsByClassName('progress-bar')[i].setAttribute('style', 'width:' + per[i] + '%')
+                    document.getElementsByClassName('progress-bar')[i].setAttribute('aria-valuemax', per[i] + '%')
+                    document.getElementsByClassName('sr-only')[i].innerHTML = per[i] + '%'
+                }, 600 / i)
+            }
+        })();
+    </script>
+
+    <!-- {% if data %}
         <h4 class="display-4 mb-5">Q: {{ data.que_text }}</h4>
         {% for choice in data.choices %}
-            <p class="lead mb-0"><b>{{ choice.choice_text }}</b> ({{ choice.vote }}/{{ data.total_votes|pluralize }}) </p> 
+            <p class="lead mb-0"><b>{{ choice.choice_text }}</b> ({{ choice.vote }}/{{ data.total_votes }}) </p> 
             <div class="progress shadow mb-4"style="height:2rem; font-size: 1.5rem;">
                 <div class="progress-bar" role="progressbar" 
                 aria-valuenow="{{ choice.vote }}" aria-valuemin="0" 
-                aria-valuemax="{{ data.total_votes }}" style="width:{% widthratio choice.vote data.total_votes 100 %}%">
+                aria-valuemax="{{ data.total_votes }}" style='width:{% widthratio choice.vote data.total_votes 100 %}%'>
                   <span class="sr-only">{% widthratio choice.vote data.total_votes 100 %}%</span>
                 </div>
             </div>
@@ -18,12 +53,7 @@
         <a href="{% url 'polls:detail' data.que_id %}" class="btn btn-success mt-3 text-center" >Vote Again</a>
     {% else %}
         <h4 class="display-4">Question Not Found</h4>
-    {% endif %}
+    {% endif %} -->
 
-    <script>
-        setTimeout(function () {
-            location.reload();
-        }, 3000);
-    </script>
-    
+
 {% endblock %}

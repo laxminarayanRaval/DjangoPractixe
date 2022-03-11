@@ -2,15 +2,33 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-from polls.models import Question
+from django.views import generic  # for making generic views
+
+from .models import Choice, Question
 
 
+class IndexView(generic.ListView):
+    template_name = 'polls/index.html'
+    context_object_name = 'latest_ques_list'
 
+    def get_queryset(self):
+        """Return the last five published Questions."""
+        return Question.objects.order_by('-pub_date')[:5]
+
+class DetailView(generic.DetailView):
+    model = Question
+    template_name = 'polls/details.html'
+
+class ResultsView(generic.DetailView):
+    model = Question
+    template_name = 'polls/result.html'
+
+"""
 def index(request):
     latest_ques_list = Question.objects.order_by('-pub_date')[:5]
     # output = "<h1>"+'</h1><h1> '.join([q.que_text for q in latest_ques_list])+"</h1>"
     template = loader.get_template('polls/index.html')
-    return HttpResponse(template.render({'que_list': latest_ques_list}, request))
+    return HttpResponse(template.render({'latest_ques_list': latest_ques_list}, request))
 
 def detail(request, que_id):
     que_detail = get_object_or_404(Question, pk=que_id)
@@ -33,6 +51,7 @@ def results(request, que_id):
     # response = "You're looking at the result of question %s."
     # return HttpResponse(response % que_id)
     return render(request, 'polls/result.html', {'data': data})
+"""
 
 def vote(request, que_id):
     que_detail = get_object_or_404(Question, pk=que_id)

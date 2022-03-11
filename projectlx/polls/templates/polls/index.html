@@ -4,9 +4,9 @@
 {% endblock %}
 {% block content %}
     <h1 class="display-1"># Poll Questions</h1>
-    {% if que_list %}
+    {% if latest_ques_list %}
         <ul>
-            {% for que in que_list %}
+            {% for que in latest_ques_list %}
             <li>
                 <a class="lead" href="{% url 'polls:detail' que.id %}">{{ que.que_text }}</a>
             </li><br>

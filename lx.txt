@@ -169,9 +169,43 @@
 
 16. Getting forms values in View --------
 - use request.POST (a dictionary-like object) eg.: request.POST['choice']
+- always keep in mind when dealing with POST request, return HttpResponseRedirect() and reverse() functions from django's 'http' and 'shortcut' respectively
+	-- put render() method inside HttpsResponseRedirect()
+	-- pass two parameters with render() method
+		I.  template name eg.: 'polls:results'
+		II. data inside named tuple as args
+
+17. Using generic views -----------
+- here as we've created, we know that our three views are redundant.
+- they are accepting que_id, using it making database operations
+- this is very common web development practise
+	-- getting data from database according to a parameter passed in the url,
+	-- loading template and returning rendered template
+- to get rid of it django provides shortcut, called the 'generic views'
+- generic views abstract common patterns to the point where you don't need to write python code to write an app.
+- for that we need to perform some tasks
+	Convert the URLconf.
+	Delete some of the old, unneeded views.
+	Introduce new views based on Django’s generic views.
+
+18. Introducing automated testing ---------
+- understand automated tests; Tests are routines that check the operation of your code.
+- Why you need to create tests
+	- Tests will save you time.
+	- Tests don’t just identify problems, they prevent them
+	- Tests make your code more attractive
+	- Tests help teams work together
+- Basic testing strategies
+	- follow a discipline called “test-driven development”
+	- write tests, before write code
+
+19. Writing our first test
 
 
-####### learn this things
+
+
+
+####### learn these things
 # Using enumerate()
 # The xrange()function
 # Variable scope and Returning Values
