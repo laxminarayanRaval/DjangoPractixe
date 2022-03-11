@@ -1,6 +1,6 @@
 # DjangoPractixe
 ###### Practising Django Web Framework ( Python )
-## Learning Django step by step
+### Learning Django step by step
 ___
 #### 0. Install/ Update Python
 ___
