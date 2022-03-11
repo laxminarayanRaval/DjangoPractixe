@@ -188,7 +188,9 @@
 	Delete some of the old, unneeded views.
 	Introduce new views based on Django’s generic views.
 
-18. Introducing automated testing ---------
+18. Making Generic Views --------
+
+19. Introducing automated testing ---------
 - understand automated tests; Tests are routines that check the operation of your code.
 - Why you need to create tests
 	- Tests will save you time.
@@ -199,7 +201,32 @@
 	- follow a discipline called “test-driven development”
 	- write tests, before write code
 
-19. Writing our first test
+20. Writing our first test ----------
+- first find a bug; here we found our bug that when we render 'index.html' we show all recent questions here
+- but what if question is posted for future publision; for that now we will write our first test
+- Create a test to expose the bug
+- A conventional place for an application's tests is in the application's 'tests.py' file.
+	-- create a class with appropriate name;
+	-- suppose we want to test a model, it will be like 'QuestionModelTests' that inherits 'TestCase'
+	eg.: class QuestionModelTests(TestCase):  # it is compulsury to inherit TestCase
+	-- make test cases and put them in 'self.assertIs(testable_method_or_something, What_it_should_return_or_results)'
+	eg.: self.assertIs(future_question.was_published_recently(), False)
+
+21. Running tests ---------
+- to run our test, perform these command
+	# $ python3 manage.py test polls  # polls = 'application_name'
+
+22. Test a view -------
+- 
+
+
+
+
+
+
+
+
+
 
 
 
