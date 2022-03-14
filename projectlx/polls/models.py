@@ -1,6 +1,7 @@
 import datetime
 from django.db import models
 from django.utils import timezone
+from django.contrib import admin  # for display decorator
 
 class Question(models.Model):
     que_text = models.CharField(max_length=200)
@@ -8,6 +9,12 @@ class Question(models.Model):
 
     def __str__(self) -> str:
         return self.que_text
+
+    @admin.display(
+        boolean=True,
+        ordering='pub_date',
+        description='Published Recently?',
+    )
 
     def was_published_recently(self):
         now = timezone.now()

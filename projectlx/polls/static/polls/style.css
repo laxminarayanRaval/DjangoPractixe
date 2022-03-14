@@ -1,4 +1,5 @@
 body {
+    background-color: #ebebeb;
     /* background: bisque url("imgs/84248.png") no-repeat; */
     /* background: repeating-linear-gradient(22deg, #fbffd7, #adbbd0 10px); */
     /* animation: booom 1s ease infinite alternate; */
@@ -38,21 +39,19 @@ body {
 li {
     /* list-style-type: square; */
     list-style: decimal-leading-zero;
-    color: rgb(19, 104, 78);
-    font-size: 1.6rem;
+    color: rgb(11, 118, 112);
+    font-size: 1.3rem;
     font-style: italic;
-    padding: 5px;
     position: sticky;
-    left: -100px;
-    box-shadow: 10px 10px 25px #dddddd, 
-            -15px -15px 30px #fff;
+    /* box-shadow: 10px 10px 25px #dddddd,  */
+            /* -15px -15px 30px #fff; */
 }
 li:hover {
     color: crimson;
     /* font-size: 2rem; */
     font-style: bold;
-    box-shadow: 10px 10px 25px #a3a3a3, 
-            -2px -2px 5px #ffffff;
+    box-shadow: 5px 5px 10px #c3c3c3,
+            0px 0px 2px 3px #e8e7e7;
 }
 li a {
     color:inherit;
