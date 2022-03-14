@@ -8,7 +8,7 @@
         <ul>
             {% for que in latest_ques_list %}
             <li>
-                <a class="lead" href="{% url 'polls:detail' que.id %}">{{ que.que_text }}</a>
+                <a href="{% url 'polls:detail' que.id %}">{{ que.que_text }}</a>
             </li><br>
             {% endfor %}
         </ul>

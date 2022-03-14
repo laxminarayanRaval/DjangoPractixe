@@ -1,0 +1,57 @@
+body {
+    /* background: bisque url("imgs/84248.png") no-repeat; */
+    background: repeating-linear-gradient(22deg, #fbffd7, #adbbd0 10px);
+    /* animation: booom 1s ease infinite alternate; */
+}
+@keyframes booom {
+    0% {
+        background: repeating-linear-gradient(0deg, #fbffd7, #adbbd0 10px);
+    }
+    10% {
+        background: repeating-linear-gradient(30deg, #fbffd7, #adbbd0 40px);
+    }
+    20% {
+        background: repeating-linear-gradient(60deg, #fbffd7, #adbbd0 80px);
+    }
+    30% {
+        background: repeating-linear-gradient(90deg, #fbffd7, #adbbd0 120px);
+    }
+    50% {
+        background: repeating-linear-gradient(120deg, #fbffd7, #adbbd0 160px);
+    }
+    60% {
+        background: repeating-linear-gradient(150deg, #fbffd7, #adbbd0 200px);
+    }
+    70% {
+        background: repeating-linear-gradient(180deg, #fbffd7, #adbbd0 240px);
+    }
+    80% {
+        background: repeating-linear-gradient(210deg, #fbffd7, #adbbd0 280px);
+    }
+    90% {
+        background: repeating-linear-gradient(240deg, #fbffd7, #adbbd0 320px);
+    }
+    100% {
+        background: repeating-linear-gradient(300deg, #fbffd7, #adbbd0 360px);
+    }
+  }
+li {
+    /* list-style-type: square; */
+    list-style: decimal-leading-zero;
+    color: rgb(19, 104, 78);
+    font-size: 1.6rem;
+    font-style: italic;
+    box-shadow: 20px 20px 50px #00d2c6, 
+            -30px -30px 60px #00ffff;
+}
+li:hover {
+    color: crimson;
+    font-size: 2rem;
+    font-style: bold;
+}
+li a {
+    color:inherit;
+}
+li a:hover{
+    color:inherit;
+}

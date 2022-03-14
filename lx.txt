@@ -189,6 +189,25 @@
 	Introduce new views based on Django’s generic views.
 
 18. Making Generic Views --------
+- Amend URLconf, via updating applications 'urls.py'
+	-- change the route, passing parameters(name of the matched pattern in path string)
+	-- before : '<int:question_id>/', after : change it to '<int:pk>'
+	-- 'DetailView' generic view expects the primary key captured from URL to be called 'pk'.
+- Amend Views, via updating applications 'views.py'
+- to make generic views follow these steps:
+	-- import generic class/module from django.views
+	-- make new classes for views; and put their name properly post fixing View
+	-- inherit generic class according to your requirement eg.: generic.ListView, generic.DetailView
+	-- We’re using two generic views here: ListView and DetailView. 
+	-- Respectively, those two views abstract the concepts of 
+		[I].  “display a list of objects” and 
+		[II]. “display a detail page for a particular type of object.”
+	eg.: class IndexView(generic.ListView): ---  # change default settings
+	-- By default, the 'DetailView' generic view uses a template called ``<app name>/<model name>_detail.html``.
+	-- In our case, it would use the template "polls/detail.html".
+	eg.: template_name = 'polls/details.html'
+	-- By default, both generic views passes context object same as model,
+	--  to change use 'context_object_name' property of view class.
 
 19. Introducing automated testing ---------
 - understand automated tests; Tests are routines that check the operation of your code.
@@ -208,7 +227,7 @@
 - A conventional place for an application's tests is in the application's 'tests.py' file.
 	-- create a class with appropriate name;
 	-- suppose we want to test a model, it will be like 'QuestionModelTests' that inherits 'TestCase'
-	eg.: class QuestionModelTests(TestCase):  # it is compulsury to inherit TestCase
+	eg.: class QuestionModelTests(TestCase):---  # it is compulsury to inherit TestCase
 	-- make test cases and put them in 'self.assertIs(testable_method_or_something, What_it_should_return_or_results)'
 	eg.: self.assertIs(future_question.was_published_recently(), False)
 
@@ -217,9 +236,24 @@
 	# $ python3 manage.py test polls  # polls = 'application_name'
 
 22. Test a view -------
-- 
+- to perform the view test
+- setup test environment via running setup_test_environment() ; import setup_test_environment from django.test.utils
+- now make client object via importing Client from django.test
+- now check the response comming from client class using get() method of client object
+- no need to perform hard urls, use reverse method from django.urls
+- to check 
+	what Http status code is it returning use 'response.status_code'
+	content is getting on page use 'response.content'
+	context/(DB model returning) is getting use 'response.context['context_object_name']  # refere 18.
 
+23. Part - 5 Customize your app’s look and feel
+- adding your styles, images and all things to make site look greater.
+- make a directory 'same name as application name' (polls), inside a 'static' directory (make this one too), inside your applications directory 
+- now put all your *.css, *.js, or any multimedia file in this folder
+- use these files in your *.html files, {% load static %} helper and then use
+- static file namespacing {% static 'polls/*.css/js/multimedia_file' %}
 
+24. 
 
 
 

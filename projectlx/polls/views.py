@@ -13,9 +13,10 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published Questions. (not including those set be published in future)."""
-        return Question.objects.filter(
+        return [que for que in Question.objects.filter(
             pub_date__lte=timezone.now()
-        ).order_by('-pub_date')[:5]
+        ).order_by('-pub_date') if que.choice_set.all()][:5]  # first filter Que. by Decs Pub_date then check Choice then splice top 5
+        # ).order_by('-pub_date')[:5] if que.choice_set.all()]  # first filter top 5 Que. by Decs Pub_date then check Choice 
 
 class DetailView(generic.DetailView):
     model = Question
