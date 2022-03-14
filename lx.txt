@@ -246,14 +246,46 @@
 	content is getting on page use 'response.content'
 	context/(DB model returning) is getting use 'response.context['context_object_name']  # refere 18.
 
-23. Part - 5 Customize your app’s look and feel
+23. Part - 6 Customize your app’s look and feel
 - adding your styles, images and all things to make site look greater.
 - make a directory 'same name as application name' (polls), inside a 'static' directory (make this one too), inside your applications directory 
 - now put all your *.css, *.js, or any multimedia file in this folder
 - use these files in your *.html files, {% load static %} helper and then use
 - static file namespacing {% static 'polls/*.css/js/multimedia_file' %}
 
-24. 
+24. Part - 7 Customize the admin form
+- Adding Fields wise data
+	-- from django.contrib import admin
+	## class QuestionAdmin(admin.ModelAdmin):
+    	##	fields = ['pub_date', 'question_text']
+	--
+	## admin.site.register(Question, QuestionAdmin)  # common
+- or this way
+	## fieldsets = [(None,{'fields': ['question_text']}),('Date information', {'fields': ['pub_date']}),]
+- Merging two Models
+	## class ChoiceInline(admin.StackedInline):
+    	##	model = Choice
+    	## 	extra = 3
+	## class QuestionAdmin(admin.ModelAdmin):
+	## 	---
+	##	inlines = [ChoiceInline]
+- or use Tebular form
+	## class ChoiceInline(admin.TabularInline):
+	##	---
+- changing the look of list of all data from model; put below code in QuestionAdmin class
+	## list_display = ('question_text', 'pub_date', 'was_published_recently')
+- adding search feild in QuestionAdmin class
+	## search_fields = ['question_text']
+- Customizing Admin Side look and feel make a directory named templates in root directory;
+- inside this directory make another directory named admin; now put here your custom .html page
+- open settings.py of your main projects directory; in this file find 'TEMPLATES' list and add the following data too;
+	## 'DIRS': [BASE_DIR / 'templates'] 
+
+===
+# Advance Tutorial
+---
+25. How to write reusable apps
+
 
 
 

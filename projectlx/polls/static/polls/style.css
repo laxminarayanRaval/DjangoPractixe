@@ -4,6 +4,9 @@ body {
     /* background: repeating-linear-gradient(22deg, #fbffd7, #adbbd0 10px); */
     /* animation: booom 1s ease infinite alternate; */
 }
+.strips {
+    background: repeating-linear-gradient(160deg, #bfbfbf, #ebebeb 9px);
+}
 @keyframes booom {
     0% {
         background: repeating-linear-gradient(0deg, #fbffd7, #adbbd0 10px);
@@ -35,7 +38,7 @@ body {
     100% {
         background: repeating-linear-gradient(300deg, #fbffd7, #adbbd0 360px);
     }
-  }
+}
 li {
     /* list-style-type: square; */
     list-style: decimal-leading-zero;
@@ -58,4 +61,11 @@ li a {
 }
 li a:hover{
     color:inherit;
+}
+.progress-bar {
+    background: repeating-linear-gradient(160deg, #1f3960, #003c96 9px) !important;
+    /* background-color: #1f3960 !important; */
+}
+a{
+    color:#ce0059;
 }

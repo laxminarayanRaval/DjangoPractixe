@@ -3,7 +3,7 @@
     <title>Result of Poll Question</title>
 {% endblock %}
 {% block content %}
-    <a href="{% url 'polls:index' %}" class="my-5 text-center" >All Polls/ </a>
+    <a href="{% url 'polls:index' %}" class="mb-0 text-center" >All Polls/ </a>
     {% if question %}
         <h2 class="mb-5">Question: <small>{{ question }}</small></h2>
         <hr>
@@ -14,9 +14,9 @@
                     <p class="text-sm text-secondary">(<i class="votes " id="{{ forloop.counter }}">{{ choice.vote }}</i>/<b class="total_vote">00</b> votes)</p></p>
                 </div>
                 <div class="col-9">
-                    <div class="progress shadow" style="height:3rem; font-size: 1rem;">
+                    <div class="progress shadow strips" style="height:3rem; font-size: 1rem;">
                         <div class="progress-bar" role="progressbar" aria-valuenow="{{ choice.vote }}" aria-valuemin="0"
-                            aria-valuemax="100" style='width:0%'>
+                            aria-valuemax="100" style='background-color: #1f3960;width:0%;'>
                             <span class="sr-only text-sm">{% widthratio choice.vote data.total_votes 100 %}%</span>
                         </div>
                     </div>
@@ -40,8 +40,8 @@
                 document.getElementsByClassName('total_vote')[i].innerHTML = sum
                 per[i] = ((per[i] / sum) * 100).toFixed(2);
                 setTimeout(() => {
-                    progressbar[i].setAttribute('style', 'width:' + per[i] + '%')
-                    progressbar[i].setAttribute('aria-valuemax', per[i] + '%')
+                    progressbar[i].setAttribute('style', 'width:' + per[i] + '%');  
+                    progressbar[i].setAttribute('aria-valuemax', per[i] + '%');
                     document.getElementsByClassName('sr-only')[i].innerHTML = per[i] + '%'
                 }, 300 / i)
             }
