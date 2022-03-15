@@ -220,7 +220,7 @@ ___
 ___
 ### 19. Making Generic Views
    - Amend URLconf, via updating application 'urls.py'
-      - change path string (route) parameter to 'pk'. before:'<int:que_id>' after:'<int:pk>'
+      - change path string (route) parameter to 'pk'. before:'< int:que_id>' after:'< int:pk>'
       - ('DetailView' expects the primary key captured from URL to be called 'pk')
    - Amend Views, via updating applications 'views.py'
    - to make generic view follow these steps: 
@@ -230,7 +230,7 @@ ___
          - (We are using only two generic views here) 
          - ([ListView: Display List of Objects] and [DetailsView: Display a detail page for particular type of object]) 
       - IV. change default settings of that view.
-         - by default, DetailView uses a template called '<app name>/<model name>_detail.html'. we can set it using 'template_name' property 
+         - by default, DetailView uses a template called '< app name>/< model name>_detail.html'. we can set it using 'template_name' property 
          - by default, both generic views passes context object same as model name. for that we'll set 'context_object_name' property.
          - eg.:\
          > class IndexView(generic.ListView): \ 
