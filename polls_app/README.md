@@ -234,6 +234,6 @@ ___
          - by default, both generic views passes context object same as model name. for that we'll set 'context_object_name' property.
          - eg.:
          
-           class IndexView(generic.ListView):
-                template_name = 'polls/detail.html'
+           class IndexView(generic.ListView): \
+                template_name = 'polls/detail.html' \
                 context_object_name = 'latest_ques_list'
