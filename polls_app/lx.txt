@@ -159,7 +159,7 @@
 14. Removing hardcoded URLs in templates ---------
 - here we use route names that we created earleir in 11.3
 - django template tag {% url %}
-- add in 'urls.py' of app directory, app_name = 'polls'  # Namespacing URL names 
+- add in 'urls.py' of app directory, app_name = 'polls'  # Namespacing URL names \
 
 15. Using Form in Django --------
 - use django's url tag for action
