@@ -99,6 +99,7 @@ ___
    - run the command to create table database
 
    ```$ python3 manage.py migrate```
+
 ___
 #### 7. Create Models
    - You can create any number of models in models directors's situated inside app
@@ -106,8 +107,7 @@ ___
    - eg.: \
       class Question(models.Model): \
       ---- que_text = models.CharField(max_length=200) \
-      ---- pub_date = models.DateTimeField('date published') \
-      ---- ans_text = models.CharField(max_length=200)
+      ---- pub_date = models.DateTimeField('date published')
 
 ___
 #### 8. Activating Models
@@ -174,4 +174,59 @@ ___
          ```return HttpsResponse(template)``` \
       II. using `render()` shortcut helper \
            eg.: ```return render(request, 'polls/index.html', {'data': "Some Data"})```
-   
+
+___
+### 14. Using Model for Retriving Data
+   - import Models(eg. Question or Choice) from '.model'. To use them to get data.
+   - Here you can use , 'Model.objects' query or django's shortcut method that accept model as first argument.
+   - to use djangos shortcut method ('get_object_or_404()') you need to import it from django.shortcuts.
+
+___
+### 15. Removing hardcoded URLs in templates
+   - here we use route names that we created earlier (ref.12. Parameter 3)
+   - using url tag template; ``{% url 'route_name' %}``
+   - add ``app_name = 'polls'`` in 'urls.py' of application directory.
+
+___
+### 16. Using Form in Django 
+   - use django's url tag (ref.15. 1st point) in form's action
+   - add csrf_token (cross-site request forgery token is used to prevent xss(cross-site site scripting)) eg.: ``{% csrf_token %}``
+   - you can use 'forloop.counter' as counter variable eg.: ``{{ forloop.counter }}``
+   - and you can use 'widthratio'; syntax: ``{% widthratio max min total %}`` it will be evaluated as (max * min / total)
+
+___
+### 17. Getting Forms Values in View
+   - use 'request.POST' a dictionary like object eg.: ``request.POST['choice']``
+   - always return '`HttpResponseRedirect(reverse())`', when dealing with POST method
+      -- import HttpResponseRedirect from django.http
+      -- import reverse from django.shortcut
+      -- `reverse(P1, P2)` P1: template name (eg.: 'polls:results') and P2: data inside tuple as args 
+      -- eg.: ``reverse('polls:results', args=(data_id, data_name))``
+
+___
+### 18. Generic Views
+   - we create genric views when we don't want to perform same operation of data retrivation, as we can see in our existing views
+   - they are accepting que_id, for making database operation
+   - this is very common web development practise 
+      -- getting data from DB according to a parameter passed in the urls,
+      -- loading template and returning rendered template
+   - to make your views generic you need amend you 'views.py', use django's 'generic view' shortcuts
+   - generic views abstract common patterns to the point where don't need to write code to make an app.
+   - for that we need to perform some tasks
+      -- Convert URLconf
+      -- Delete old views, that we are going to make generic.
+      -- Introduce new views based on django's generic views.
+
+___
+### 19. Making Generic Views
+   - Amend URLconf, via updating application 'urls.py'
+      - change path string (route) parameter to 'pk'. before:'<int:que_id>' after:'<int:pk>'
+      -- ('DetailView' expects the primary key captured from URL to be called 'pk')
+   - Amend Views, via updating applications 'views.py'
+   - to make generic view follow these steps:
+      I. import generic class from django.views
+      II. make new classes for views. (Always PostFix 'View' eg.: ResultView)
+      III. inherit generic class according to your requirements eg.: generic.ListView or generic.DetailView
+         -- (We are using only two generic views here)
+         -- ([ListView:](Display List of Objects) and [DetailsView:](Display a detail page for particular type of object))
+      IV. 
