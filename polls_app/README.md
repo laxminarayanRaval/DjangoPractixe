@@ -304,7 +304,6 @@ ___
    - inside this directory make another directory named admin; now put here your custom .html page
    - open settings.py of your main projects directory; in this file find 'TEMPLATES' list and add the following data too
 
-===
 ### Advance Tutorial
 ___
 #### 25. How to write reusable apps
