@@ -258,8 +258,8 @@ ___
       - suppose we want to test a model, it'll be like 'QuestionModelTests' that inherits 'TestCase'
       - make a test case and put them in a 'assertIn' method; syntax: `self.assertIn(testable_method_or_something, what_it_should_return_or_result)`
       - eg.:
-         class QuestionModelTest(TestCase):
-         --- -------some-method--------
+         class QuestionModelTest(TestCase): \
+         --- -------some-methods-------- \
          --- self.assertIn(future_question.was_published_recently(), False)) 
 
 ___
@@ -269,5 +269,53 @@ ___
 ___
 #### 22. Test a View
    - to perform view test, setup test environment via running setup_test_environment(); import setup_test_environment from django.test.utils
-   - now make a object of Client via importing it from django.test
-   - 
+   <!-- - now make a object of Client via importing it from django.test; -->
+   - check the response comming from client class using get() method of client object
+   - no need to perform hard URLs, use reverse from django.urls
+   - to check :
+      - Http Status Code: `response.status_code`
+      - is getting content: `response.content`
+      - is getting context: `response.context['context_objects_name']` (DB/Model Data)(ref.19.) 
+
+___
+#### 23. Customizing application's look and feel
+   - Adding your styles, images and all things to make site look greater.
+   - make a directory 'same name as applications name'(polls), inside a 'static' directory (make this one too), inside app_dir
+   - now put all customization files inside this folder
+   - to use these file inside *.html files, {% load static %} helper and static file namespacing {% static 'polls/style.css' %}
+
+___
+#### 24. Customizing Admin Form
+   - Admin site field wise data
+      - from django.contrib import admin; make a QuestionAdmin class that extends 'admin.ModelAdmin' and set fields property with list of order of fields
+      
+         ``fields = ['pub_date', 'question_text']``
+      - or fieldsets; a list of tuple containing first value as Header name, and second as Dictionary of fields which contains list of ordered fields
+
+         ``fieldsets = [(None, {'fields': ['que_text']}), ('pub_date', {'fields': ['pub_date']}),]``
+   - Merging Two Models (Related Models)
+      - make a choiceInLine class and extends 'admin.StackedInline', set properties of this
+         - model as name of Model and extra as how many times you want to repeat these inputs
+      - we can show these Data in Tebular Form via extending 'admin.TebularInline' instead of 'admin.StackedInline'
+   - Changing the look of list of all data from model; for that set below properties of 'QuestionAdmin' class
+      - 'list_display = ('que_text', 'pub_date', 'was_published_recently')' for list filter
+      - 'search_fields = ['que_text']' for searching facilties
+   - Customizing Admin Side look and feel make a directory named templates in root directory;
+   - inside this directory make another directory named admin; now put here your custom .html page
+   - open settings.py of your main projects directory; in this file find 'TEMPLATES' list and add the following data too
+
+===
+### Advance Tutorial
+___
+#### 25. How to write reusable apps
+- Installing some prerequisites \
+	```$ python3 -m pip install setuptools```
+- Packaging your app; preparing your app in a specific format that can be easily installed and used.
+	1. Create a new directory out side package directory prefixing name with 'django' eg.: django-polls
+	2. Move the app directory in the directory; and make a README.rst (reStructured Text); and put some details regaring app in this file.
+	3. make a licence, pyproject.toml, setup.cfg, setup.py, MANIFEST.in
+	4. then perform this # ``$ python3 setup.py sdist``
+- Using your own package
+	1. Installed it. # ``$ python3 -m pip install --user django-polls/dist/django-polls-0.1.tar.gz``
+	2. Uninstall it. # ``$ python3 -m pip uninstall django-polls``
+- Now you can Publish your app
