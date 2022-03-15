@@ -1,0 +1,69 @@
+{% extends 'polls/base.html' %}
+{% block head %}
+    <title>Result of Poll Question</title>
+{% endblock %}
+{% block content %}
+    <a href="{% url 'polls:index' %}" class="mb-0 text-center" >All Polls/ </a>
+    {% if question %}
+        <h2 class="mb-5">Question: <small>{{ question }}</small></h2>
+        <hr>
+        <div class="row p-0 m-0">
+                {% for choice in question.choice_set.all %}
+                <div class="col-3 text-end">
+                    <p class="lead mb-0"><b>{{ choice.choice_text }}</b>
+                    <p class="text-sm text-secondary">(<i class="votes " id="{{ forloop.counter }}">{{ choice.vote }}</i>/<b class="total_vote">00</b> votes)</p></p>
+                </div>
+                <div class="col-9">
+                    <div class="progress shadow strips" style="height:3rem; font-size: 1rem;">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="{{ choice.vote }}" aria-valuemin="0"
+                            aria-valuemax="100" style='background-color: #1f3960;width:0%;'>
+                            <span class="sr-only text-sm">{% widthratio choice.vote data.total_votes 100 %}%</span>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                {% endfor %}
+            </div>
+            <a href="{% url 'polls:detail' question.id %}" class="btn btn-success mt-3 text-center" >Vote Again</a>
+    {% endif %}
+    <script>
+        let sum = 0;
+        let per = [];
+        (() => {
+            let votes = document.getElementsByClassName('votes')
+            for (let i = 0; i < votes.length; i++) {
+                sum += Number(votes[i].innerHTML)
+                per[i] = Number(votes[i].innerHTML)
+            }
+            let progressbar = document.getElementsByClassName('progress-bar')
+            for (let i = 0; i < votes.length; i++) {
+                document.getElementsByClassName('total_vote')[i].innerHTML = sum
+                per[i] = ((per[i] / sum) * 100).toFixed(2);
+                setTimeout(() => {
+                    progressbar[i].setAttribute('style', 'width:' + per[i] + '%');  
+                    progressbar[i].setAttribute('aria-valuemax', per[i] + '%');
+                    document.getElementsByClassName('sr-only')[i].innerHTML = per[i] + '%'
+                }, 300 / i)
+            }
+        })();
+    </script>
+
+    <!-- {% if data %}
+        <h4 class="display-4 mb-5">Q: {{ data.que_text }}</h4>
+        {% for choice in data.choices %}
+            <p class="lead mb-0"><b>{{ choice.choice_text }}</b> ({{ choice.vote }}/{{ data.total_votes }}) </p> 
+            <div class="progress shadow mb-4"style="height:2rem; font-size: 1.5rem;">
+                <div class="progress-bar" role="progressbar" 
+                aria-valuenow="{{ choice.vote }}" aria-valuemin="0" 
+                aria-valuemax="{{ data.total_votes }}" style='width:{% widthratio choice.vote data.total_votes 100 %}%'>
+                  <span class="sr-only">{% widthratio choice.vote data.total_votes 100 %}%</span>
+                </div>
+            </div>
+        {% endfor %}
+        <a href="{% url 'polls:detail' data.que_id %}" class="btn btn-success mt-3 text-center" >Vote Again</a>
+    {% else %}
+        <h4 class="display-4">Question Not Found</h4>
+    {% endif %} -->
+
+
+{% endblock %}

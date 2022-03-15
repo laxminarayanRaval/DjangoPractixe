@@ -1,0 +1,40 @@
+{% extends './base.html' %}
+{% block head %}
+    <title>Poll Page</title>
+{% endblock %}
+{% block content %}
+    {% if question %}
+    <div class="row">
+        <div class="col">
+            <h6 class="display-6">Q: <code>{{ question.que_text }}</code></h6>
+        </div>
+    </div>
+    <div class="row">
+        <form action="{% url 'polls:vote' question.id %}" method="post">
+            {% csrf_token %}
+            <div class="col-6">
+                {% if error_msg %}<p><strong>{{ error_msg }}</strong></p>{% endif %}
+                <input type="hidden" name="qid" value="{{ question.id }}">
+                <ol>
+                    {% for choice in question.choice_set.all %}
+                    <li>
+                        <div class="form-check m-3">
+                            <input class="form-check-input" type="radio" name="choice" value="{{ choice.id }}"
+                                id="flexRadioDefault{{ forloop.counter }}">
+                            <label class="form-check-label" for="flexRadioDefault{{ forloop.counter }}">
+                                {{ choice.choice_text }}
+                            </label>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="col-6">
+                <input type="submit" class="btn width-100 btn-dark btn-lg" value="Vote">
+            </div>
+        </form>
+    </div>
+    {% else %}
+    <h4 class="display-4">Question Not Found. Something went wrong</h4>
+    {% endif %}
+{% endblock %}
