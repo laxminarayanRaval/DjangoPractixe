@@ -176,26 +176,26 @@ ___
            eg.: ```return render(request, 'polls/index.html', {'data': "Some Data"})```
 
 ___
-### 14. Using Model for Retriving Data
+#### 14. Using Model for Retriving Data
    - import Models(eg. Question or Choice) from '.model'. To use them to get data.
    - Here you can use , 'Model.objects' query or django's shortcut method that accept model as first argument.
    - to use djangos shortcut method ('get_object_or_404()') you need to import it from django.shortcuts.
 
 ___
-### 15. Removing hardcoded URLs in templates
+#### 15. Removing hardcoded URLs in templates
    - here we use route names that we created earlier (ref.12. Parameter 3)
    - using url tag template; ``{% url 'route_name' %}``
    - add ``app_name = 'polls'`` in 'urls.py' of application directory.
 
 ___
-### 16. Using Form in Django 
+#### 16. Using Form in Django 
    - use django's url tag (ref.15. 1st point) in form's action
    - add csrf_token (cross-site request forgery token is used to prevent xss(cross-site site scripting)) eg.: ``{% csrf_token %}``
    - you can use 'forloop.counter' as counter variable eg.: ``{{ forloop.counter }}``
    - and you can use 'widthratio'; syntax: ``{% widthratio max min total %}`` it will be evaluated as (max * min / total)
 
 ___
-### 17. Getting Forms Values in View
+#### 17. Getting Forms Values in View
    - use 'request.POST' a dictionary like object eg.: ``request.POST['choice']``
    - always return '`HttpResponseRedirect(reverse())`', when dealing with POST method 
       - import HttpResponseRedirect from django.http 
@@ -204,7 +204,7 @@ ___
       - eg.: ``reverse('polls:results', args=(data_id, data_name))`` 
 
 ___
-### 18. Generic Views
+#### 18. Generic Views
    - we create genric views when we don't want to perform same operation of data retrivation, as we can see in our existing views
    - they are accepting que_id, for making database operation
    - this is very common web development practise 
@@ -218,7 +218,7 @@ ___
       - Introduce new views based on django's generic views. 
 
 ___
-### 19. Making Generic Views
+#### 19. Making Generic Views
    - Amend URLconf, via updating application 'urls.py'
       - change path string (route) parameter to 'pk'. before:'< int:que_id>' after:'< int:pk>'
       - ('DetailView' expects the primary key captured from URL to be called 'pk')
@@ -236,3 +236,38 @@ ___
            class IndexView(generic.ListView): \
             --- template_name = 'polls/detail.html' \
             --- context_object_name = 'latest_ques_list'
+
+___
+#### 20. Introduction to automated testing
+   - Understand automated tests; Tests are routines that check the operation of your code.
+   - Why you need to create tests
+      - test will save your time.
+      - test helps team work together
+      - test make your code work affective
+      - test don't just identify problems, it prevents them
+   - Basic testing strategies
+      - follow a discipline called "test-driven development"
+      - write tests, before code
+
+___
+#### 21. Writing our First Test
+   - first find a bug; here we found a bug in index page where we are showing recent question but some questions with future date are showing too
+   - creating a test to expose the bug
+   - A conventional place for an applications tests is in the application's 'tests.py'
+      - create a class with appropriate name:
+      - suppose we want to test a model, it'll be like 'QuestionModelTests' that inherits 'TestCase'
+      - make a test case and put them in a 'assertIn' method; syntax: `self.assertIn(testable_method_or_something, what_it_should_return_or_result)`
+      - eg.:
+         class QuestionModelTest(TestCase):
+         --- -------some-method--------
+         --- self.assertIn(future_question.was_published_recently(), False)) 
+
+___
+##### Running Tests
+   - to run our test, use ``$ python3 manage.py test app_name``; app_name='polls'
+
+___
+#### 22. Test a View
+   - to perform view test, setup test environment via running setup_test_environment(); import setup_test_environment from django.test.utils
+   - now make a object of Client via importing it from django.test
+   - 

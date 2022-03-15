@@ -218,7 +218,7 @@
 	- Tests help teams work together
 - Basic testing strategies
 	- follow a discipline called “test-driven development”
-	- write tests, before write code
+	- write tests, before write code	
 
 20. Writing our first test ----------
 - first find a bug; here we found our bug that when we render 'index.html' we show all recent questions here
