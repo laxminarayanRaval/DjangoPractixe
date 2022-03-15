@@ -224,16 +224,16 @@ ___
       - ('DetailView' expects the primary key captured from URL to be called 'pk')
    - Amend Views, via updating applications 'views.py'
    - to make generic view follow these steps: 
-      - I. import generic class from django.views 
-      - II. make new classes for views. (Always PostFix 'View' eg.: ResultView) 
-      - III. inherit generic class according to your requirements eg.: generic.ListView or generic.DetailView 
+      - import generic class from django.views 
+      - make new classes for views. (Always PostFix 'View' eg.: ResultView) 
+      - inherit generic class according to your requirements eg.: generic.ListView or generic.DetailView 
          - (We are using only two generic views here) 
          - ([ListView: Display List of Objects] and [DetailsView: Display a detail page for particular type of object]) 
-      - IV. change default settings of that view.
+      - change default settings of that view.
          - by default, DetailView uses a template called '< app name>/< model name>_detail.html'. we can set it using 'template_name' property 
          - by default, both generic views passes context object same as model name. for that we'll set 'context_object_name' property.
          - eg.:
          
-         class IndexView(generic.ListView):
-            template_name = 'polls/detail.html'
-            context_object_name = 'latest_ques_list'
+           class IndexView(generic.ListView):
+                template_name = 'polls/detail.html'
+                context_object_name = 'latest_ques_list'
