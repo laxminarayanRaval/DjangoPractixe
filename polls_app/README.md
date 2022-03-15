@@ -233,7 +233,6 @@ ___
          - by default, DetailView uses a template called '< app name>/< model name>_detail.html'. we can set it using 'template_name' property 
          - by default, both generic views passes context object same as model name. for that we'll set 'context_object_name' property.
          - eg.:
-         
            class IndexView(generic.ListView): \
-                template_name = 'polls/detail.html' \
-                context_object_name = 'latest_ques_list'
+            --- template_name = 'polls/detail.html' \
+            --- context_object_name = 'latest_ques_list'
