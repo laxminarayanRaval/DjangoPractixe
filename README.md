@@ -1,4 +1,4 @@
-# DjangoPractixe
+# DjangoPractixe Polls App
 ###### Practising Django Web Framework ( Python )
 ### Learning Django step by step
 ___
