@@ -198,38 +198,38 @@ ___
 ### 17. Getting Forms Values in View
    - use 'request.POST' a dictionary like object eg.: ``request.POST['choice']``
    - always return '`HttpResponseRedirect(reverse())`', when dealing with POST method \
-      -- import HttpResponseRedirect from django.http \
-      -- import reverse from django.shortcut \
-      -- `reverse(P1, P2)` P1: template name (eg.: 'polls:results') and P2: data inside tuple as args  \
-      -- eg.: ``reverse('polls:results', args=(data_id, data_name))`` 
+      - import HttpResponseRedirect from django.http \
+      - import reverse from django.shortcut \
+      - `reverse(P1, P2)` P1: template name (eg.: 'polls:results') and P2: data inside tuple as args  \
+      - eg.: ``reverse('polls:results', args=(data_id, data_name))`` 
 
 ___
 ### 18. Generic Views
    - we create genric views when we don't want to perform same operation of data retrivation, as we can see in our existing views
    - they are accepting que_id, for making database operation
    - this is very common web development practise \
-      -- getting data from DB according to a parameer passed in the urls, \
-      -- loading template and returning rendered template \
+      - getting data from DB according to a parameer passed in the urls, \
+      - loading template and returning rendered template \
    - to make your views generic you need amend you 'views.py', use django's 'generic view' shortcuts
    - generic views abstract common patterns to the point where don't need to write code to make an app.
    - for that we need to perform some tasks \
-      -- Convert URLconf \
-      -- Delete old views, that we are going to make generic. \
-      -- Introduce new views based on django's generic views. 
+      - Convert URLconf \
+      - Delete old views, that we are going to make generic. \
+      - Introduce new views based on django's generic views. 
 
 ___
 ### 19. Making Generic Views
    - Amend URLconf, via updating application 'urls.py'
       - change path string (route) parameter to 'pk'. before:'<int:que_id>' after:'<int:pk>'
-      -- ('DetailView' expects the primary key captured from URL to be called 'pk')
+      - ('DetailView' expects the primary key captured from URL to be called 'pk')
    - Amend Views, via updating applications 'views.py'
    - to make generic view follow these steps: \
       I. import generic class from django.views \
       II. make new classes for views. (Always PostFix 'View' eg.: ResultView) \
       III. inherit generic class according to your requirements eg.: generic.ListView or generic.DetailView \
-         -- (We are using only two generic views here) \
-         -- ([ListView: Display List of Objects] and [DetailsView: Display a detail page for particular type of object]) \
+         - (We are using only two generic views here) \
+         - ([ListView: Display List of Objects] and [DetailsView: Display a detail page for particular type of object]) \
       IV. change default settings of that view.
-         -- by default, DetailView uses a template called '<app name>/<model name>_detail.html'. we can set it using 'template_name' property 
-         -- by default, both generic views passes context object same as model name. for that we'll set 'context_object_name' property.
-         -- eg.: >  class IndexView(generic.ListView): \ template_name = 'polls/detail.html' \ context_object_name = 'latest_ques_list'
+         - by default, DetailView uses a template called '<app name>/<model name>_detail.html'. we can set it using 'template_name' property 
+         - by default, both generic views passes context object same as model name. for that we'll set 'context_object_name' property.
+         - eg.: >  class IndexView(generic.ListView): \ template_name = 'polls/detail.html' \ context_object_name = 'latest_ques_list'
