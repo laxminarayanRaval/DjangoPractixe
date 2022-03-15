@@ -244,7 +244,7 @@
 - to check 
 	what Http status code is it returning use 'response.status_code'
 	content is getting on page use 'response.content'
-	context/(DB model returning) is getting use 'response.context['context_object_name']  # refere 18.
+	context/(DB model returning) is getting use 'response.context['context_object_name']  # refere 18.	
 
 23. Part - 6 Customize your app’s look and feel
 - adding your styles, images and all things to make site look greater.
