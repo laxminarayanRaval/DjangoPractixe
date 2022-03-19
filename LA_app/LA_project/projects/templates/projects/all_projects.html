@@ -3,12 +3,14 @@
     All Projects Lists
 {% endblock %}
 {% block content %}
+{% load static %}
     <h1>Projects</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis autem nostrum maxime, dignissimos ratione veniam? Consequuntur qui neque quas delectus nostrum! Hic dicta corporis dolore dolorum a eius minus temporibus.</p>
     <h4>List of All Projects</h4>
     <ul>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
         {% for project in projects %}
-        <li class="my-3 px-3">
+        <!-- <li class="my-3 px-3">
             {{ project }} &nbsp;&nbsp;
             <a href="{% url 'update-project' project.id %}" title="edit"><i class="bi bi-pencil-square"></i></a> 
             &nbsp;
@@ -17,27 +19,76 @@
             <a data-bs-toggle="modal" data-bs-target="#exampleModal{{ forloop.counter }}" title="delete">
                 <i class="bi bi-trash3 text-danger"></i>
             </a>
-        </li>
-        
-        
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Confirm Your Action</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </li> -->
+
+            
+            <div class="col">
+                <div class="card h-100">
+                    <a href="{% url 'project' project.title %}" title="open">
+                        <img src="{% static 'img/project.png' %}" class="card-img-top" alt="{{ project }}">
+                    </a>
+
+                    <div class="card-body">
+                        <h5 class="card-title" title="{{ project|title }}">{{ project|truncatechars:20 }}</h5>
+                        {% if project.description %}
+                        <p class="card-text">{{ project.description|truncatechars:80 }}</p>
+                        {% else %}
+                        <p class="card-text">Description Not Available.</p>
+                        {% endif %}
                     </div>
-                    <div class="modal-body">
-                        You want to Delete Project "<b>{{ project }}</b>" 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <a href="{% url 'delete-project' project.id %}" class="btn btn-danger">Confirm Delete</a>
+            
+                    <div class="card-footer">
+                        <a href="{% url 'update-project' project.id %}" title="edit"><i class="bi bi-pencil-square"></i></a>
+                        &nbsp;
+                        <!-- <a href="{% url 'project' project.title %}" title="open"><i class="bi bi-folder2-open text-success"></i></a> -->
+                        &nbsp;
+                        <a data-bs-toggle="modal" data-bs-target="#exampleModal{{ forloop.counter }}" title="delete">
+                            <i class="bi bi-trash3 text-danger"></i>
+                        </a><br>
+                        <small class="text-muted">{{ project.owner.name }}</small>
                     </div>
                 </div>
             </div>
+            
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">You really want to Delete</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body bg-secondary">
+                            <!-- You want to Delete Project "<b>{{ project }}</b>"  -->
+                            <div class="card h-100 w-50 top-0 start-50 translate-middle-x shadow">
+                                <a href="{% url 'project' project.title %}" title="open">
+                                    <img src="{% static 'img/project.png' %}" class="card-img-top" alt="{{ project }}">
+                                </a>
+                                
+                                <div class="card-body">
+                                    <h5 class="card-title" title="{{ project|title }}">{{ project|truncatechars:30 }}</h5>
+                                    {% if project.description %}
+                                    <p class="card-text">{{ project.description|truncatechars:100 }}</p>
+                                    {% else %}
+                                    <p class="card-text">Description Not Available.</p>
+                                    {% endif %}
+                                </div>
+                        
+                                <div class="card-footer">
+                                    <small class="text-muted">{{ project.owner.name }}</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <a href="{% url 'delete-project' project.id %}" class="btn btn-danger">Confirm Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+        
     </ul><br><br><br><br>
 {% endblock %}

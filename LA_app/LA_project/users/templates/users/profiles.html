@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block content %}
+    {% if profiles %}
+    <h2>User Profiles</h2>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for profile in profiles %}
+        <div class="col w-25">
+            <div class="card">
+                <img src="{{ profile.profile_img.url }}" class="card-img-top" height="20%" alt="{{ profile.name|title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ profile.name|title }}</h5>
+                    <p class="card-text">{{ profile.short_intro }}</p>
+                    <p class="card-text text-primary">{{ profile.bio|truncatechars:30 }}</p>
+                    <a href="{% url 'user-profile' profile.id %}" class="btn btn-success rounded-pill">Show More about User</a>
+                </div>
+                <div class="card-footer">
+                    skills: {% for skill in profile.skills_set.all %}
+                    <span class="badge rounded-pill bg-info text-dark">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <h4 class="display-4">No Profiles Found</h4>
+    {% endif %}
+{% endblock %}
