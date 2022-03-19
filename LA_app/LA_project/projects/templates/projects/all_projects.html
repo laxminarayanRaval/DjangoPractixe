@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% block title %}
+    All Projects Lists
+{% endblock %}
+{% block content %}
+    <h1>Projects</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis autem nostrum maxime, dignissimos ratione veniam? Consequuntur qui neque quas delectus nostrum! Hic dicta corporis dolore dolorum a eius minus temporibus.</p>
+    <h4>List of All Projects</h4>
+    <ul>
+        {% for project in projects %}
+        <li class="my-3 px-3">
+            {{ project }} &nbsp;&nbsp;
+            <a href="{% url 'update-project' project.id %}" title="edit"><i class="bi bi-pencil-square"></i></a> 
+            &nbsp;
+            <a href="{% url 'project' project.title %}" title="open"><i class="bi bi-folder2-open text-success"></i></a> 
+            &nbsp;
+            <a data-bs-toggle="modal" data-bs-target="#exampleModal{{ forloop.counter }}" title="delete">
+                <i class="bi bi-trash3 text-danger"></i>
+            </a>
+        </li>
+        
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Confirm Your Action</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        You want to Delete Project "<b>{{ project }}</b>" 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <a href="{% url 'delete-project' project.id %}" class="btn btn-danger">Confirm Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </ul><br><br><br><br>
+{% endblock %}

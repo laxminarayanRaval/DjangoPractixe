@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block title %}
+    Project Form
+{% endblock %}
+{% block content %}
+    <h4>Project Form</h4>
+    <table>
+        <form method="post">
+            {% csrf_token %}
+            {{form}}
+            <!-- {% for field in form %} -->
+            <!-- <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput{{forloop.counter}}" placeholder="name@example.com">
+                <label for="floatingInput{{forloop.counter}}">{{ field.label }}</label>
+                {{ field }}
+            </div> -->
+            <!-- {% endfor %} -->
+            <tr>
+                <td>
+                    <input type="reset" value="reset all details">
+                </td>
+                <td>
+                    <input type="submit" value="submit">
+                </td>
+            </tr>
+        </form>
+    </table>
+
+{% endblock %}

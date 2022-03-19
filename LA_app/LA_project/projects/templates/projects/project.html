@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block title %}
+    {{ project }}
+{% endblock %}
+{% block content %}
+    {% if project %}
+        <h3 class="display-3">{{ project }}</h3>
+        <img src="{{ project.featured_img.url }}" width="98%" alt="Project Image"><br>
+        <code>@ {{ project.created_at }}</code>
+        <p class="lead">{{ project.description }}</p>
+        <br>Tags: 
+        {% for tags in project.tags.all %}
+            <span class="badge rounded-pill bg-primary">{{ tags }}</span>
+        {% endfor %}
+        <br><br>
+        Was it Helpful:
+        <a href="{% url 'upvote' project.title %}" title="open"><i class="bi bi-hand-thumbs-up"></i></a> 
+        <a href="{% url 'downvote' project.title %}" title="open"><i class="bi bi-hand-thumbs-down"></i></a> 
+    {% else %}
+        <h6>Project Not Found</h6>
+    {% endif %}
+    <br><br>
+{% endblock %}
