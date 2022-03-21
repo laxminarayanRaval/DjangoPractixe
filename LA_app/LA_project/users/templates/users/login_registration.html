@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+{% block title %} Login Registration {% endblock %}
+{% block content %}
+
+<div class="row">
+    <div class="col"></div>
+    {% if page == 'register' %}
+    <div class="col-5 py-3">
+        <!-- old way -->
+        <!-- 
+        <table>
+            <form method="post">
+                <tr>
+                    <td colspan="2">
+                        <h1 class="display-3 mb-3">Register Please</h1>
+                    </td>
+                </tr>
+                {% csrf_token %}
+                {{form.as_table}}
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Register" class="w-50 btn btn-lg btn-primary"><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Already Have an Account? <a href="{% url 'login' %}">Login</a>
+                    </td>
+                </tr>
+            </form>
+        </table>
+         -->
+        <form action="" method="post">
+            <h1 class="display-3 mb-3">Register Please</h1>
+            {% csrf_token %}
+            {% for field in form %}
+
+                <div class="form-floating mt-3">
+                    {{field}}
+                    <label for="floating{{field.name}}">{{ field.label }}</label>
+                </div>
+                
+                {% if field.help_text %}
+                    <small>{{field.help_text}}</small>
+                {% endif %}
+
+                {% for error in field.errors %}
+                    <p class="text-danger">{{error}}</p>
+                {% endfor %}
+        
+            {% endfor %}
+            <div class="form-floating my-3">
+                <input type="submit" value="Register" class="w-50 btn btn-lg btn-primary">
+            </div>
+            <div class="form-floating">
+                Already Have an Account? <a href="{% url 'login' %}">Login</a>
+            </div>
+        </form>
+    </div>
+    {% elif page == 'login' %}
+    <div class="col-4 py-3">
+        <form action="{% url 'login' %}" method="post">
+            <h1 class="h3 mb-3 fw-normal">Login Please</h1><br>
+            {% csrf_token %}
+            <div class="form-floating">
+                <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username" required>
+                <label for="floatingInput">Username</label>
+            </div><br>
+            <div class="form-floating">
+                <input type="password" name="password" class="form-control" id="floatingPassword"
+                    placeholder="Password" required>
+                <label for="floatingPassword">Password</label>
+            </div><br>
+            <input type="submit" value="Login" class="w-50 btn btn-lg btn-primary"><br><br>
+            Don't Have an Account? <a href="{% url 'register' %}">Register</a>
+        </form>
+    </div>
+    {% endif %}
+    <div class="col"></div>
+</div>
+
+{% endblock %}
