@@ -1,8 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
-from django.db.models.signals import post_save, post_delete
-from django.dispatch import receiver  # decorators for signals
+
 
 class Profiles(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
@@ -34,15 +33,3 @@ class Skills(models.Model):
     def __str__(self):
         return str(self.name)
 
-
-@receiver(post_save, sender=Profiles)
-def profileUpdated(sender,instance, created, **kwargs):
-    print("Profile SAved")
-    print("Instance:", instance)
-    print("Created :", created)
-
-def profileDelete(sender, instance, **kwargs):
-    print("Profile Deleted")
-
-# post_save.connect(profileUpdated, sender=Profiles)
-# post_delete.connect(profileDelete, sender=Profiles)

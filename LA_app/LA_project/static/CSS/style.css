@@ -25,3 +25,8 @@ li{
 .me-2 {
     margin-right: .5rem!important;
 }
+
+.helptext{
+    font-size: 0.75rem;
+    color: steelblue;
+}
